@@ -1,0 +1,181 @@
+.theme-blue {
+  --bg-color-1: #0a1128;
+  --bg-color-2: #001f54;
+  --accent-color: 0, 119, 182;
+  --bubble-bg-opacity: 0.08;
+  --gradient-start-opacity: 0.05;
+}
+
+.theme-green {
+  --bg-color-1: #0d210f;
+  --bg-color-2: #14342b;
+  --accent-color: 46, 196, 182;
+  --float-animation-duration: 30s;
+  --light-strip-opacity: 0.2;
+}
+
+:root {
+  /* Cores do tema */
+  --bg-color-1: var(--color-codeflix-gray, #141414);
+  --bg-color-2: var(--color-codeflix-dark, #1a1a2e);
+  --accent-color: var(--color-glass-codeflix, rgba(229, 9, 20, 1));
+  
+  /* Configurações das bolhas */
+  --bubble-count: 4;
+  --bubble-min-size: 100px;
+  --bubble-max-size: 250px;
+  --bubble-opacity: 0.8;
+  --bubble-bg-opacity: 0.05;
+  --bubble-border-opacity: 0.1;
+  
+  /* Animação das bolhas */
+  --float-animation-duration: 25s;
+  --float-translate-y: -100px;
+  --float-rotate: 360deg;
+  
+  /* Faixas de luz */
+  --light-strip-count: 2;
+  --light-strip-width: 1px;
+  --light-strip-opacity: 0.3;
+  --light-strip-color: var(--accent-color);
+  --light-sweep-duration: 60s;
+  
+  /* Gradiente animado */
+  --gradient-start-opacity: 0.03;
+  --gradient-end-opacity: 0.8;
+  --pulse-duration: 30s;
+  --pulse-scale: 1.5;
+}
+
+.animated-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--bg-color-1) 0%, var(--bg-color-2) 100%);
+}
+
+/* Bolhas flutuantes - geradas dinamicamente */
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(var(--accent-color), var(--bubble-bg-opacity));
+  border: 1px solid rgba(var(--accent-color), var(--bubble-border-opacity));
+  opacity: var(--bubble-opacity);
+  animation: float var(--float-animation-duration) linear infinite;
+}
+
+/* Posições e tamanhos das bolhas */
+.bubble:nth-child(1) {
+  width: calc(var(--bubble-max-size) * 0.6);
+  height: calc(var(--bubble-max-size) * 0.6);
+  bottom: -50px;
+  left: 10%;
+  animation-duration: calc(var(--float-animation-duration) * 1);
+}
+
+.bubble:nth-child(2) {
+  width: var(--bubble-max-size);
+  height: var(--bubble-max-size);
+  top: 20%;
+  right: -50px;
+  animation-duration: calc(var(--float-animation-duration) * 1.2);
+  animation-direction: reverse;
+}
+
+.bubble:nth-child(3) {
+  width: var(--bubble-min-size);
+  height: var(--bubble-min-size);
+  top: 60%;
+  left: 30%;
+  animation-duration: calc(var(--float-animation-duration) * 0.8);
+}
+
+.bubble:nth-child(4) {
+  width: calc(var(--bubble-max-size) * 0.72);
+  height: calc(var(--bubble-max-size) * 0.72);
+  bottom: 30%;
+  right: 20%;
+  animation-duration: calc(var(--float-animation-duration) * 1.4);
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(var(--float-translate-y)) rotate(calc(var(--float-rotate) / 2));
+  }
+  100% {
+    transform: translateY(0) rotate(var(--float-rotate));
+  }
+}
+
+/* Faixas de luz sutil */
+.light-strip {
+  position: absolute;
+  height: 100%;
+  width: var(--light-strip-width);
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(var(--light-strip-color), 0.1) 15%,
+    rgba(var(--light-strip-color), 0.05) 50%,
+    rgba(var(--light-strip-color), 0.1) 85%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: light-sweep var(--light-sweep-duration) linear infinite;
+  opacity: var(--light-strip-opacity);
+}
+
+.light-strip:nth-child(5) {
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.light-strip:nth-child(6) {
+  left: 70%;
+  animation-delay: calc(var(--light-sweep-duration) / -2);
+}
+
+@keyframes light-sweep {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Gradiente animado */
+.gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(var(--accent-color), var(--gradient-start-opacity)) 0%,
+    rgba(20, 20, 40, var(--gradient-end-opacity)) 100%
+  );
+  animation: pulse var(--pulse-duration) ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.8;
+    background-size: 100% 100%;
+  }
+  50% {
+    opacity: 1;
+    background-size: calc(100% * var(--pulse-scale)) calc(100% * var(--pulse-scale));
+  }
+  100% {
+    opacity: 0.8;
+    background-size: 100% 100%;
+  }
+}

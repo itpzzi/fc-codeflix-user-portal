@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "*.css": "tailwindcss"
+    },
+    "tailwindCSS.emmetCompletions": true,
+    "tailwindCSS.showPixelEquivalents": true,
+    "tailwindCSS.experimental.configFile": "src/app/globals.css",
+    "css.validate": false
+}

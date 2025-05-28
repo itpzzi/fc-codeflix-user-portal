@@ -1,0 +1,85 @@
+
+@theme {
+  /* Cores base codeflix + Glassmorphism */
+  --color-codeflix-red: #e50914;
+  --color-codeflix-dark: #141414;
+  --color-codeflix-gray: #2a2a2a;
+  --color-codeflix-light: #f5f5f1;
+  
+  /* Cores glassmorphism codeflix */
+  --color-glass-codeflix: rgba(20, 20, 20, 0.85);
+  --color-glass-codeflix-light: rgba(229, 9, 20, 0.15);
+  --color-glass-codeflix-dark: rgba(0, 0, 0, 0.7);
+  --color-glass-codeflix-border: rgba(229, 9, 20, 0.2);
+  
+  /* Efeitos de blur ajustados */
+  --blur-sm: 4px;
+  --blur-md: 8px;
+  --blur-lg: 12px;
+  
+  /* Sombras codeflix-style */
+  --shadow-codeflix: 0 8px 16px rgba(0, 0, 0, 0.5);
+  --shadow-codeflix-lg: 0 12px 28px rgba(0, 0, 0, 0.6);
+  
+  /* Bordas */
+  --radius-codeflix: 4px;
+  --radius-codeflix-lg: 8px;
+  
+  /* Gradientes codeflix */
+  --gradient-codeflix: linear-gradient(
+    to top,
+    rgba(20, 20, 20, 0.9) 0%,
+    rgba(20, 20, 20, 0.6) 60%,
+    rgba(20, 20, 20, 0.3) 100%
+  );
+}
+
+/* Dark mode (codeflix já é dark por padrão) */
+@media (prefers-color-scheme: dark) {
+  @theme {
+    --color-glass-codeflix: rgba(20, 20, 20, 0.9);
+    --color-glass-codeflix-light: rgba(229, 9, 20, 0.2);
+  }
+}
+
+/* Classes utilitárias codeflix Glassmorphism */
+@layer utilities {
+  .glass-codeflix {
+    background: var(--color-glass-codeflix);
+    backdrop-filter: blur(var(--blur-md));
+    border: 1px solid var(--color-glass-codeflix-border);
+    box-shadow: var(--shadow-codeflix);
+    border-radius: var(--radius-codeflix);
+  }
+  
+  .glass-codeflix-header {
+    background: var(--gradient-codeflix);
+    backdrop-filter: blur(var(--blur-sm));
+    border-bottom: 1px solid var(--color-codeflix-red);
+  }
+  
+  .glass-codeflix-card {
+    background: var(--color-glass-codeflix-dark);
+    backdrop-filter: blur(var(--blur-sm));
+    border-radius: var(--radius-codeflix-lg);
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: var(--shadow-codeflix-lg);
+      border: 1px solid var(--color-codeflix-red);
+    }
+  }
+  
+  .glass-codeflix-menu {
+    background: var(--color-glass-codeflix);
+    backdrop-filter: blur(var(--blur-lg));
+    border-right: 1px solid var(--color-glass-codeflix-border);
+  }
+  
+  .glass-codeflix-red {
+    background: rgba(229, 9, 20, 0.2);
+    backdrop-filter: blur(var(--blur-md));
+    border: 1px solid var(--color-codeflix-red);
+  }
+}
