@@ -1,85 +1,72 @@
-
 @theme {
-  /* Cores base codeflix + Glassmorphism */
-  --color-codeflix-red: #e50914;
-  --color-codeflix-dark: #141414;
-  --color-codeflix-gray: #2a2a2a;
-  --color-codeflix-light: #f5f5f1;
-  
-  /* Cores glassmorphism codeflix */
-  --color-glass-codeflix: rgba(20, 20, 20, 0.85);
-  --color-glass-codeflix-light: rgba(229, 9, 20, 0.15);
-  --color-glass-codeflix-dark: rgba(0, 0, 0, 0.7);
-  --color-glass-codeflix-border: rgba(229, 9, 20, 0.2);
-  
-  /* Efeitos de blur ajustados */
-  --blur-sm: 4px;
-  --blur-md: 8px;
-  --blur-lg: 12px;
-  
-  /* Sombras codeflix-style */
-  --shadow-codeflix: 0 8px 16px rgba(0, 0, 0, 0.5);
-  --shadow-codeflix-lg: 0 12px 28px rgba(0, 0, 0, 0.6);
-  
-  /* Bordas */
-  --radius-codeflix: 4px;
-  --radius-codeflix-lg: 8px;
-  
-  /* Gradientes codeflix */
-  --gradient-codeflix: linear-gradient(
-    to top,
-    rgba(20, 20, 20, 0.9) 0%,
-    rgba(20, 20, 20, 0.6) 60%,
-    rgba(20, 20, 20, 0.3) 100%
+  /* Paleta base usando Tailwind */
+  --color-codeflix-red: var(--color-red-600);
+  --color-codeflix-dark: var(--color-neutral-950);
+  --color-codeflix-gray: var(--color-neutral-800);
+  --color-codeflix-light: var(--color-neutral-100);
+
+  /* Fundo glass translúcido */
+  --glass-bg: rgba(var(--color-neutral-100-rgb), 0.05);
+  --glass-bg-strong: rgba(var(--color-neutral-100-rgb), 0.12);
+  --glass-border: rgba(var(--color-neutral-100-rgb), 0.2);
+  --glass-highlight: rgba(var(--color-neutral-100-rgb), 0.3);
+
+  /* Blur */
+  --blur-xs: 2px;
+  --blur-sm: 6px;
+  --blur-md: 12px;
+  --blur-lg: 20px;
+
+  /* Sombras suaves */
+  --shadow-glass: 0 4px 12px rgba(0, 0, 0, 0.25);
+  --shadow-glass-lg: 0 8px 30px rgba(0, 0, 0, 0.4);
+
+  /* Bordas arredondadas */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+
+  /* Gradiente de fundo elegante */
+  --gradient-glass: linear-gradient(
+    135deg,
+    rgba(var(--color-neutral-100-rgb), 0.08) 0%,
+    rgba(var(--color-neutral-100-rgb), 0.02) 100%
   );
 }
 
-/* Dark mode (codeflix já é dark por padrão) */
-@media (prefers-color-scheme: dark) {
-  @theme {
-    --color-glass-codeflix: rgba(20, 20, 20, 0.9);
-    --color-glass-codeflix-light: rgba(229, 9, 20, 0.2);
+@layer components {
+  .glass-surface {
+    @apply backdrop-blur-md border shadow-[var(--shadow-glass)] rounded-[var(--radius-md)];
+    background: var(--glass-bg);
+    border-color: var(--glass-border);
   }
-}
 
-/* Classes utilitárias codeflix Glassmorphism */
-@layer utilities {
-  .glass-codeflix {
-    background: var(--color-glass-codeflix);
-    backdrop-filter: blur(var(--blur-md));
-    border: 1px solid var(--color-glass-codeflix-border);
-    box-shadow: var(--shadow-codeflix);
-    border-radius: var(--radius-codeflix);
+  .glass-card {
+    @apply backdrop-blur-sm transition-all duration-300 ease-in-out rounded-[var(--radius-lg)] shadow-[var(--shadow-glass)];
+    background: var(--glass-bg-strong);
+    border: 1px solid var(--glass-border);
   }
-  
-  .glass-codeflix-header {
-    background: var(--gradient-codeflix);
-    backdrop-filter: blur(var(--blur-sm));
-    border-bottom: 1px solid var(--color-codeflix-red);
+
+  .glass-card:hover {
+    @apply scale-[1.03] shadow-[var(--shadow-glass-lg)];
+    border-color: var(--glass-highlight);
   }
-  
-  .glass-codeflix-card {
-    background: var(--color-glass-codeflix-dark);
-    backdrop-filter: blur(var(--blur-sm));
-    border-radius: var(--radius-codeflix-lg);
-    transition: all 0.3s ease;
-    
-    &:hover {
-      transform: scale(1.05);
-      box-shadow: var(--shadow-codeflix-lg);
-      border: 1px solid var(--color-codeflix-red);
-    }
+
+  .glass-header {
+    @apply backdrop-blur-xs border-b;
+    background: var(--gradient-glass);
+    border-color: var(--glass-border);
   }
-  
-  .glass-codeflix-menu {
-    background: var(--color-glass-codeflix);
-    backdrop-filter: blur(var(--blur-lg));
-    border-right: 1px solid var(--color-glass-codeflix-border);
+
+  .glass-menu {
+    @apply backdrop-blur-md bg-white/5 border border-white/20 shadow-md;
+    background: var(--glass-bg);
+    border-color: var(--glass-border);
   }
-  
-  .glass-codeflix-red {
-    background: rgba(229, 9, 20, 0.2);
-    backdrop-filter: blur(var(--blur-md));
-    border: 1px solid var(--color-codeflix-red);
+
+  .glass-accent {
+    @apply backdrop-blur-md border shadow-[var(--shadow-glass)];
+    background: var(--color-codeflix-red);
+    border-color: var(--glass-highlight);
   }
 }
