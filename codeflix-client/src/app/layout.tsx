@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-import { AnimatedBackground } from "./components/AnimatedBackground";
+import { AnimatedBackground } from "@/components/AnimatedBackground";
 import { BottomNav } from "@/components/BottomNav";
 
 export const metadata: Metadata = {
