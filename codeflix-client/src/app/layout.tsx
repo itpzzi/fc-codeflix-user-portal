@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 import { AnimatedBackground } from "./components/AnimatedBackground";
+import { BottomNav } from "@/components/BottomNav";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,7 +20,10 @@ export default function RootLayout({
         <div className="theme-default">
           <AnimatedBackground />
         </div>
-        {children}
+        <div className="relative min-h-screen">
+          <main className="pb-20">{children}</main> {/* Espaço para a bottom-nav */}
+          <BottomNav />
+        </div>
       </body>
     </html>
   );
