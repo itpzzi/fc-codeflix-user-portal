@@ -4,6 +4,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { BannerContent } from '@/components/FeaturedSection/BannerContent';
 import { Movie } from '@/types/movie';
+import { createMockMovie } from '@/tests/mocks/movie';
 
 
 jest.mock('framer-motion', () => ({
@@ -15,19 +16,7 @@ jest.mock('framer-motion', () => ({
   },
 }));
 
-const mockMovie: Movie = {
-  id: 1,
-  title: 'Test Movie',
-  description: 'This is a test movie description',
-  yearLaunched: '2023',
-  link: '/watch/test-movie',
-  castMembers: ['Actor1', 'Actor2'],
-  genres: ['Action', 'Adventure', 'Sci-Fi'],
-  thumbFileURL: '/test-thumb.jpg',
-  bannerFileURL: '/test-banner.jpg',
-  videoFileURL: '/test-video.mp4',
-  rating: 'L'
-};
+const mockMovie: Movie = createMockMovie();
 
 describe('BannerContent', () => {
   it('deve renderizar o título do filme', () => {

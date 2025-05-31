@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { BannerFeatured } from '@/components/FeaturedSection/BannerFeatured';
 import { Movie } from '@/types/movie';
+import { createMockMovie } from '@/tests/mocks/movie';
 
 jest.mock('next/image', () => ({
   __esModule: true,
@@ -26,19 +27,7 @@ jest.mock('./BannerContent', () => ({
   ),
 }));
 
-const mockMovie: Movie = {
-  id: 1,
-  title: 'Test Movie',
-  description: 'This is a test movie description',
-  yearLaunched: '2023',
-  link: '/watch/test-movie',
-  castMembers: ['Actor1', 'Actor2'],
-  genres: ['Action', 'Adventure', 'Sci-Fi'],
-  thumbFileURL: '/test-thumb.jpg',
-  bannerFileURL: '/test-banner.jpg',
-  videoFileURL: '/test-video.mp4',
-  rating: 'L'
-};
+const mockMovie: Movie = createMockMovie();
 
 describe('BannerFeatured', () => {
   it('deve renderizar o vídeo de fundo com poster e atributos corretos', () => {

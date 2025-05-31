@@ -4,6 +4,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { FeaturedSection } from '@/components/FeaturedSection/FeaturedSection';
 import { Movie } from '@/types/movie';
+import { createMockMovie } from '@/tests/mocks/movie';
 
 
 jest.mock('./BannerFeatured', () => ({
@@ -30,32 +31,16 @@ jest.mock('./SlideFeatured', () => ({
 }));
 
 const mockMovies: Movie[] = [
-  {
-    id: 1,
-    title: 'Test Movie',
-    description: 'This is a test movie description',
-    yearLaunched: '2023',
-    link: '/watch/test-movie',
-    castMembers: ['Actor1', 'Actor2'],
-    genres: ['Action', 'Adventure', 'Sci-Fi'],
-    thumbFileURL: '/test-thumb.jpg',
-    bannerFileURL: '/test-banner.jpg',
-    videoFileURL: '/test-video.mp4',
-    rating: 'L'
-  },
-  {
-    id: 2,
-    title: 'Test Movie 2',
-    description: 'This is a test movie description',
-    yearLaunched: '2025',
-    link: '/watch/test-movie',
-    castMembers: ['Actor3', 'Actor4'],
-    genres: ['Drama', 'Suspense'],
-    thumbFileURL: '/test-thumb.jpg',
-    bannerFileURL: '/test-banner.jpg',
-    videoFileURL: '/test-video.mp4',
-    rating: 'L'
-  },
+  createMockMovie(),
+  createMockMovie(
+    {
+      id: 2,
+      title: 'Test Movie 2',
+      yearLaunched: '2025',
+      castMembers: ['Actor3', 'Actor4'],
+      link: '/watch/2',
+    }
+  )
 ];
 
 describe('FeaturedSection', () => {
