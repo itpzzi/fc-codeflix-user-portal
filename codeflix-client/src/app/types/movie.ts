@@ -13,3 +13,9 @@ export type Movie = {
 };
 
 export type Movies = Movie[];
+
+export interface MovieWithExtras extends Movie {
+  matchPercentage: number;
+  quality: string;
+  duration: number;
+}

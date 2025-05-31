@@ -1,4 +1,4 @@
-import { Movie } from '@/types/movie';
+import { Movie, MovieWithExtras } from '@/types/movie';
 
 const mockMovie: Movie = {
     id: 1,
@@ -14,7 +14,21 @@ const mockMovie: Movie = {
     rating: 'L'
 };
 
+const mockExtras = {
+    matchPercentage: 82,
+    quality: 'FHD',
+    duration: 120
+};
+
+
+
 export const createMockMovie = (overrides: Partial<Movie> = {}): Movie => ({
     ...mockMovie,
+    ...overrides,
+});
+
+export const createMockMovieWithExtras = (overrides: Partial<MovieWithExtras> = {}): MovieWithExtras => ({
+    ...mockMovie,
+    ...mockExtras,
     ...overrides,
 });
