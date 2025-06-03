@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-import { AnimatedBackground } from "@/components/AnimatedBackground";
-import { BottomNav } from "@/components/BottomNav";
+import { LayoutClient } from "@/components/LayoutClient";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,14 +16,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="theme-default">
-          <AnimatedBackground />
-        </div>
-        <div className="relative min-h-screen">
-          <main className="pb-20">{children}</main> {/* Espaço para a bottom-nav */}
-          <BottomNav />
-        </div>
+        <LayoutClient children={children} />
       </body>
     </html>
-  );
+  )
 }
