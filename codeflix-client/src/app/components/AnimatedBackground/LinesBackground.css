@@ -1,0 +1,87 @@
+:root {
+  --line-color-primary: #8b0000;
+  --line-color-secondary: #000000;
+  --line-opacity: 0.5;
+
+  --animation-speed-base: 5s;
+  --animation-speed-layer-1: calc(var(--animation-speed-base) + 1s);
+  --animation-speed-layer-2: calc(var(--animation-speed-base) + 2s);
+  --animation-speed-layer-3: calc(var(--animation-speed-base) + 3s);
+
+  --content-shadow: rgba(0, 0, 0, 0.25);
+  --content-radius: 0.25em;
+  --content-padding: 10vmin;
+}
+
+html, body, .lines-background {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.lines-background {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+.line-layer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: -50%;
+  right: -50%;
+  background-image: linear-gradient(
+    -60deg,
+    var(--line-color-primary) 50%,
+    var(--line-color-secondary) 50%
+  );
+  opacity: var(--line-opacity);
+  z-index: -1;
+  animation-name: slide-diagonal;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.layer-1 {
+  animation-duration: var(--animation-speed-layer-1);
+}
+
+.layer-2 {
+  animation-duration: var(--animation-speed-layer-2);
+  animation-direction: alternate-reverse;
+}
+
+.layer-3 {
+  animation-duration: var(--animation-speed-layer-3);
+}
+
+@keyframes slide-diagonal {
+  0% {
+    transform: translateX(-25%);
+  }
+  100% {
+    transform: translateX(25%);
+  }
+}
+
+.lines-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: var(--content-padding);
+  background-color: var(--content-bg);
+  border-radius: var(--content-radius);
+  box-shadow: 0 0 0.25em var(--content-shadow);
+  text-align: center;
+  z-index: 0;
+}
+
+.lines-title {
+  font-family: monospace;
+  margin: 0;
+}

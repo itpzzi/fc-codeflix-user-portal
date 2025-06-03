@@ -1,14 +1,14 @@
 "use client";
 import React from 'react';
-import './AnimatedBackground.css';
+import './BubblesBackground.css';
 
-interface AnimatedBackgroundProps {
+interface BubblesBackgroundProps {
   theme?: 'default' | 'blue' | 'green';
   bubbleCount?: number;
   accentColor?: string;
 }
 
-export const AnimatedBackground: React.FC<AnimatedBackgroundProps> = ({
+export const BubblesBackground: React.FC<BubblesBackgroundProps> = ({
   theme = 'default',
   bubbleCount = 4,
   accentColor = '229, 9, 20'
@@ -19,7 +19,7 @@ export const AnimatedBackground: React.FC<AnimatedBackgroundProps> = ({
   }, [accentColor, bubbleCount]);
 
   return (
-    <div className={`animated-background theme-${theme}`}>
+    <div className={`bubbles-background theme-${theme}`}>
       {/* Bolhas - geradas dinamicamente baseadas em --bubble-count */}
       {[...Array(bubbleCount)].map((_, i) => (
         <div key={i} className="bubble" />

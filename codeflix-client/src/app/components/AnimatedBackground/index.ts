@@ -1,4 +1,6 @@
-import { AnimatedBackground } from "./AnimatedBackground";
+import { BubblesBackground } from "./BubblesBackground";
+import { LinesBackground } from "./LinesBackground";
 export {
-    AnimatedBackground,
+    BubblesBackground,
+    LinesBackground
 }
