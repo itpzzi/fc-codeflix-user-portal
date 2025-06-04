@@ -9,7 +9,7 @@ import { SearchBar } from '@/components/SearchBar';
 const navItems = [
   { href: '/home', icon: Home, label: 'Home' },
   { href: '/search', icon: Search, label: 'Busca' },
-  { href: '/player', icon: Play, label: 'Player' },
+  { href: '/watch', icon: Play, label: 'Player' },
   { href: '/profile', icon: User, label: 'Perfil' },
   { href: '/settings', icon: Settings, label: 'Config' },
 ];

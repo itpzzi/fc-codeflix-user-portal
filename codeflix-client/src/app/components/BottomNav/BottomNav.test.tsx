@@ -46,7 +46,7 @@ describe('BottomNav', () => {
   });
 
   it('não aplica classe ativa a links não selecionados', () => {
-    mockedUsePathname.mockReturnValue('/player');
+    mockedUsePathname.mockReturnValue('/watch');
 
     render(<BottomNav />);
 
