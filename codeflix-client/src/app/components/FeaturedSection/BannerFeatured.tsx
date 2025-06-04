@@ -8,7 +8,7 @@ interface BannerFeaturedProps extends Movie { }
 
 export function BannerFeatured(props: BannerFeaturedProps) {
   return (
-    <div className="relative glass-surface h-[40vh] xl:h-[60vh] mt-8 p-6 flex flex-col justify-end overflow-hidden">
+    <div className="relative glass-surface h-[40vh] xl:h-[60vh] p-6 flex flex-col justify-end overflow-hidden">
       {/* Vídeo de fundo */}
       <video
         src={props.videoFileURL}

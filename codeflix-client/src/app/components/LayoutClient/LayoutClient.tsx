@@ -33,7 +33,7 @@ export default function LayoutClient({ children }: LayoutClientProps) {
             </div>
 
             <div className="relative min-h-screen">
-                <main className="pb-20">{children}</main>
+                <main className="relative space-y-24 px-16 mt-8 pb-20">{children}</main>
                 <BottomNav />
             </div>
         </div>
