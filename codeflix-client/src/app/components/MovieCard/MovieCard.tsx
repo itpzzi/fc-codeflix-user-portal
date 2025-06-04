@@ -6,13 +6,15 @@ import { MovieCardActions } from './MovieCardActions';
 import { MovieCardInfo } from './MovieCardInfo';
 import { MovieWithExtras } from '@/types/movie';
 import { useImageColors } from '@/hooks/useImageColors';
+import clsx from 'clsx';
 
 interface MovieCardProps {
   movie: MovieWithExtras;
   index: number;
+  className?: string;
 }
 
-export function MovieCard({ movie }: MovieCardProps) {
+export function MovieCard({ movie, className }: MovieCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const { accentColor } = useImageColors(movie.bannerFileURL);
 
@@ -35,8 +37,12 @@ export function MovieCard({ movie }: MovieCardProps) {
       data-testid="movie-card"
       role="button"
       aria-label={`Filme: ${movie.title}`}
-      className="group relative rounded-xl overflow-hidden min-w-[280px] h-[280px] flex-shrink-0 cursor-pointer 
-                 focus:outline-2 focus:outline-white focus:outline-offset-2 transition-all duration-200"
+      className={clsx(
+        'group relative rounded-xl overflow-hidden cursor-pointer',
+        'focus:outline-2 focus:outline-white focus:outline-offset-2',
+        'transition-all duration-200',
+        className
+      )}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onKeyDown={handleKeyDown}
@@ -52,7 +58,7 @@ export function MovieCard({ movie }: MovieCardProps) {
 
       {/* Overlay */}
       <div
-        className={`absolute inset-0 p-4 flex flex-col justify-between text-white 
+        className={`absolute inset-0 p-4 flex flex-col justify-center text-white 
                     backdrop-blur-2xl backdrop-brightness-150 bg-gradient-to-t 
                     from-white/30 via-white/10 to-white/0 transition-opacity duration-200
                     ${isHovered ? 'opacity-100' : 'opacity-0 group-hover:opacity-100 group-focus:opacity-100 group-focus-within:opacity-100'}`}
