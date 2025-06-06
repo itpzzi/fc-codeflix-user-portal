@@ -26,9 +26,9 @@ describe('BottomNav', () => {
     render(<BottomNav />);
 
     const links = screen.getAllByRole('link');
-    expect(links).toHaveLength(4);
+    expect(links).toHaveLength(3);
 
-    const labels = ['Home', 'Player', 'Perfil', 'Config'];
+    const labels = ['Home', 'Perfil', 'Config'];
     labels.forEach((label) => {
       const link = screen.getByLabelText(label);
       expect(link).toBeInTheDocument();
@@ -46,11 +46,11 @@ describe('BottomNav', () => {
   });
 
   it('não aplica classe ativa a links não selecionados', () => {
-    mockedUsePathname.mockReturnValue('/watch');
+    mockedUsePathname.mockReturnValue('/home');
 
     render(<BottomNav />);
 
-    const inactiveLabels = ['Home', 'Perfil', 'Config'];
+    const inactiveLabels = ['Perfil', 'Config'];
     inactiveLabels.forEach((label) => {
       const link = screen.getByLabelText(label);
       expect(link).not.toHaveClass('scale-110');
