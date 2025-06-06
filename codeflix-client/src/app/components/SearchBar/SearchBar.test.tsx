@@ -56,7 +56,7 @@ describe('SearchBar', () => {
         fireEvent.change(inputElement, { target: { value: mockQuery }});
         fireEvent.submit(formElement);
 
-        expect(pushMock).toHaveBeenCalledWith(`${mockRouteBase}?q=${queryEncoded}`);
+        expect(pushMock).toHaveBeenCalledWith(`${mockRouteBase}?title=${queryEncoded}`);
 
     });
 })

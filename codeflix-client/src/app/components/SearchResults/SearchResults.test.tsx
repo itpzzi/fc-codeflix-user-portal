@@ -6,6 +6,7 @@ import '@testing-library/jest-dom';
 
 jest.mock('next/navigation', () => ({
     useSearchParams: jest.fn(),
+    useRouter: jest.fn(),
 }));
 
 jest.mock('@/components/MovieCard', () => ({
@@ -18,7 +19,7 @@ describe('SearchResults', () => {
     it('deve renderizar legenda de filmes vazios com o termo pesquisado', () => {
         mockedUseSearchParams.mockReturnValue({
             get: jest.fn().mockImplementation((key) => {
-                if (key === 'q') return 'Termo Pesquisa';
+                if (key === 'title') return 'Termo Pesquisa';
             })
         });
         render(<SearchResults movies={[]} />);
@@ -29,7 +30,7 @@ describe('SearchResults', () => {
     it('deve renderizar cards de filmes e legenda com o termo pesquisado', () => {
         mockedUseSearchParams.mockReturnValue({
             get: jest.fn().mockImplementation((key) => {
-                if (key === 'q') return 'Termo Pesquisa';
+                if (key === 'title') return 'Termo Pesquisa';
             })
         });
         // @ts-ignore

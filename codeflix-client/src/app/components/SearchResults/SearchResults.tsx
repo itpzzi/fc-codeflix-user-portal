@@ -10,10 +10,9 @@ interface SearchResultsProps {
 }
 
 export function SearchResults({ movies }: SearchResultsProps) {
-  
   // Adiciona os extras de mock aos filmes
   const searchParams = useSearchParams();
-  const searchTerm = searchParams.get("q") || "";
+  const searchTerm = searchParams.get("title") || "";
 
   const moviesWithExtras = movies.map(addMovieExtras);
 

@@ -20,12 +20,12 @@ export function SearchBar({
 }: SearchBarProps) {
   const router = useRouter();
   const [query, setQuery] = useState(initialQuery);
-  const inputRef = useRef<HTMLInputElement>(null);
+
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (query.trim()) {
-      router.push(`${routeBase}?q=${encodeURIComponent(query)}`);
+      router.push(`${routeBase}?title=${encodeURIComponent(query)}`);
     }
   };
 
@@ -38,7 +38,6 @@ export function SearchBar({
         {icon}
       </div>
       <input
-        ref={inputRef}
         type="search"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
