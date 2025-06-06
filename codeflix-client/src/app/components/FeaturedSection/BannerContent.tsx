@@ -29,12 +29,12 @@ const scaleIn = {
     }),
 };
 
-interface Props extends Movie {}
+interface BannerContentProps extends Movie {}
 
-export function BannerContent(props: Props) {
+export function BannerContent(movie: BannerContentProps) {
     return (
         <motion.div
-            key={props.title}
+            key={movie.title}
             className="relative z-10 text-white"
             variants={containerVariants}
             initial="hidden"
@@ -44,22 +44,22 @@ export function BannerContent(props: Props) {
                 className="text-2xl md:text-4xl lg:text-7xl font-bold"
                 variants={slideInLeft}
             >
-                {props.title}
+                {movie.title}
             </motion.p>
 
             <motion.p
-                key={props.title}
+                key={movie.title}
                 className="mt-3 text-xl max-w-3xl text-white/70"
                 variants={{
                     ...slideInLeft,
                     show: { ...slideInLeft.show, transition: { duration: 0.5, delay: 0.2 } },
                 }}
             >
-                {props.description}
+                {movie.description}
             </motion.p>
 
             <div className="my-8 flex space-x-2">
-                {props.genres.map((genre, index) => (
+                {movie.genres.map((genre, index) => (
                     <motion.button
                         key={index}
                         custom={index}
@@ -75,19 +75,19 @@ export function BannerContent(props: Props) {
 
             <div className="mt-4 flex items-center gap-4">
                 <motion.a
-                    key={props.link}
-                    href={props.link}
-                    className="bg-white text-black text-2xl px-6 py-4 font-semibold hover:scale-105 transition-transform rounded-full"
+                    key={movie.link}
+                    href={movie.link}
+                    className="bg-white text-black text-2xl flex space-x-4 px-6 py-4 font-semibold hover:scale-105 transition-transform rounded-full"
                     custom={0}
                     variants={scaleIn}
                     initial="hidden"
                     animate="show"
                 >
-                    <button className="inline-flex space-x-4"><Play /> <span>Watch Now</span></button>
+                    <Play /> <span>Watch Now</span>
                 </motion.a>
 
                 <motion.button
-                    key={props.title}
+                    key={movie.title}
                     className="flex items-center gap-2 text-white px-4 py-2 rounded-full"
                     custom={1}
                     variants={scaleIn}
