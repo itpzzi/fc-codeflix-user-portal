@@ -35,7 +35,7 @@ export function GenreSection({ movies, genreTitle }: GenreSectionProps) {
               key={`${movie.id}-${index}`}
               movie={movie}
               index={index}
-              className="w-full aspect-[2/3] flex-shrink-0"
+              className="w-full aspect-[2/3] max-w-[20rem] min-w-[280px] flex-shrink-0"
             />
           ))}
         </div>
