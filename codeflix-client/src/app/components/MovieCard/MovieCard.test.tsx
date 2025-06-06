@@ -23,6 +23,10 @@ jest.mock('@/hooks/useImageColors', () => ({
   }),
 }));
 
+jest.mock('next/navigation', () => ({
+  useRouter: jest.fn(),
+}));
+
 describe('MovieCard', () => {
   const movie: MovieWithExtras = createMockMovieWithExtras();
 

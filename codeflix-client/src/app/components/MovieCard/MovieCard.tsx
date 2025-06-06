@@ -7,6 +7,7 @@ import { MovieCardInfo } from './MovieCardInfo';
 import { MovieWithExtras } from '@/types/movie';
 import { useImageColors } from '@/hooks/useImageColors';
 import clsx from 'clsx';
+import { useRouter } from 'next/navigation';
 
 interface MovieCardProps {
   movie: MovieWithExtras;
@@ -17,6 +18,7 @@ interface MovieCardProps {
 export function MovieCard({ movie, className }: MovieCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const { accentColor } = useImageColors(movie.bannerFileURL);
+  const router = useRouter();
 
   const toggleHover = () => setIsHovered((prev) => !prev);
 
@@ -27,7 +29,7 @@ export function MovieCard({ movie, className }: MovieCardProps) {
     }
   };
 
-  const handlePlay = () => console.log('Play:', movie.title);
+  const handlePlay = () => router.push(movie.link)
   const handleStar = () => console.log('Star:', movie.title);
   const handleAddToList = () => console.log('Add to list:', movie.title);
   const handleShowMore = () => console.log('Show more:', movie.title);
