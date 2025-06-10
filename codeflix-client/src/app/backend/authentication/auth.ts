@@ -1,5 +1,4 @@
-; import {
-    DefaultSession,
+import {
     getServerSession,
     type NextAuthOptions
 } from "next-auth";
@@ -9,14 +8,22 @@ import Credentials from "next-auth/providers/credentials";
 import { UserToken } from "@/backend/user/types";
 import { authService } from "./AuthService";
 import { JWT } from "next-auth/jwt";
+import Keycloak from "next-auth/providers/keycloak";
 
 export const authOptions: NextAuthOptions = {
     session: {
         strategy: "jwt",
     },
     callbacks: {
-        jwt: async ({ token, user }: { token: JWT; user: DefaultSession["user"] }) => {
-            user && (token.user = user);
+        jwt: async ({ token, user, profile, account }) => {
+            if (user) {
+                token.user = user;
+            }
+
+            if (account && profile) {
+                token.isChild = (profile as any).isChild || false;
+            }
+
             return token;
         },
         session({ session, token }) {
@@ -25,7 +32,7 @@ export const authOptions: NextAuthOptions = {
                 user: {
                     ...session.user,
                     id: token.sub as string,
-                    isChild: (token as UserToken).user?.isChild,
+                    isChild: (token as UserToken).user?.isChild || (token as JWT).isChild || false,
                 }
             }
         },
@@ -40,7 +47,6 @@ export const authOptions: NextAuthOptions = {
                 password: { label: "Senha", type: "password" }
             },
             authorize: async (credentials) => {
-
                 if (!credentials?.email || !credentials.password) {
                     return null;
                 }
@@ -52,8 +58,12 @@ export const authOptions: NextAuthOptions = {
 
                 return user
             },
-
         }),
+        Keycloak({
+            clientId: process.env.KEYCLOAK_CLIENT_ID!,
+            clientSecret: process.env.KEYCLOAK_CLIENT_SECRET!,
+            issuer: process.env.KEYCLOAK_ISSUER!
+        })
     ],
 };
 

@@ -1,6 +1,7 @@
 import React from "react";
 import { SignOutButton } from "@/components/SignOutButton";
-import { getServerAuthSession, SessionUser } from "@/backend/authentication/auth";
+import { getServerAuthSession } from "@/backend/authentication/auth";
+import { SessionUser } from "@/backend/user/types";
 
 export default async function Profile() {
   const session = await getServerAuthSession();
