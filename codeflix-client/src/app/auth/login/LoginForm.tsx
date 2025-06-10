@@ -144,6 +144,10 @@ export default function LoginForm() {
         </div>
       )}
 
+      <button onClick={() => signIn("keycloak", { callbackUrl: "/home" })}>
+        Signin with keycloak
+      </button>
+
     </AuthForm>
   );
 }
