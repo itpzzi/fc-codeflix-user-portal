@@ -1,9 +1,11 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import ForgotPasswordForm from './ForgetPasswordForm';
 import "@testing-library/jest-dom";
+import { InputProps } from '@/components/CodeflixInput/CodeflixInput';
+import { ButtonProps } from '@/components/CodeflixButton/CodeflixButton';
 
 jest.mock('@/components/CodeflixInput/CodeflixInput', () => ({
-  CodeflixInput: ({ label, value, onChange, placeholder, type }: any) => (
+  CodeflixInput: ({ label, value, onChange, placeholder, type }: InputProps) => (
     <div>
       <label>{label}</label>
       <input
@@ -17,7 +19,7 @@ jest.mock('@/components/CodeflixInput/CodeflixInput', () => ({
 }));
 
 jest.mock('@/components/CodeflixButton/CodeflixButton', () => ({
-  CodeflixButton: ({ children, type }: any) => (
+  CodeflixButton: ({ children, type }: ButtonProps) => (
     <button type={type}>{children}</button>
   )
 }));

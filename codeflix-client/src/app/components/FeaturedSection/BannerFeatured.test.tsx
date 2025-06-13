@@ -1,25 +1,12 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { BannerFeatured } from '@/components/FeaturedSection/BannerFeatured';
+import { BannerFeatured, BannerFeaturedProps } from '@/components/FeaturedSection/BannerFeatured';
 import { Movie } from '@/types/movie';
 import { createMockMovie } from '@/tests/mocks/movie';
 
-jest.mock('next/image', () => ({
-  __esModule: true,
-  default: ({ src, alt, fill, ...props }: any) => (
-    <img
-      src={src}
-      alt={alt}
-      style={fill ? {} : {}}
-      {...props}
-    />
-  ),
-}));
-
-
 jest.mock('./BannerContent', () => ({
-  BannerContent: ({ title, description }: any) => (
+  BannerContent: ({ title, description }: BannerFeaturedProps) => (
     <div data-testid="banner-content">
       <p>{title}</p>
       <p>{description}</p>

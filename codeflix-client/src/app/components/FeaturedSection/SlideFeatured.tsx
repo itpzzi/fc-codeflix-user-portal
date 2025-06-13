@@ -3,7 +3,7 @@ import { Movie } from '@/types/movie';
 import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 
-interface Props {
+export interface SlideFeaturedProps {
   movies: Movie[];
   onSelect: (movie: Movie) => void;
   selectedMovie: Movie | null;
@@ -12,9 +12,9 @@ interface Props {
 const SLIDE_INTERVAL_MS = 10000;
 const TOTAL_SLIDE_SLOTS = 5;
 
-export function SlideFeatured({ movies, onSelect, selectedMovie }: Props) {
+export function SlideFeatured({ movies, onSelect, selectedMovie }: SlideFeaturedProps) {
   const internalMovies = movies.slice(0, TOTAL_SLIDE_SLOTS);
-  const [_, setIndex] = useState(0);
+  const [, setIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {

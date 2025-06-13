@@ -22,7 +22,7 @@ export function SearchResults({ movies }: SearchResultsProps) {
     return (
       <>
         <h2 className="text-xl md:text-3xl lg:text-5xl font-semibold mb-8">
-          Search results for "{searchTerm}"
+          Search results for &quot;{searchTerm}&quot;
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 md:gap-2 xl:gap-4">
           {moviesWithExtras.map((movie, index) => (
@@ -42,7 +42,7 @@ export function SearchResults({ movies }: SearchResultsProps) {
     return (
       <>
         <h2 className="text-xl md:text-3xl lg:text-5xl font-semibold mb-8">
-          No results for "{searchTerm}"
+          No results for &quot;{searchTerm}&quot;
         </h2>
       </>
     )

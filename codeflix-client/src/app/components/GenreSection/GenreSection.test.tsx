@@ -5,7 +5,7 @@ import { createMockMovie } from '@/tests/mocks/movie';
 import '@testing-library/jest-dom';
 
 jest.mock('@/components/MovieCard', () => ({
-  MovieCard: ({ movie, index }: any) => (
+  MovieCard: ({ movie, index }: { index: number; movie: Movie }) => (
     <div data-testid="movie-card" data-index={index}>
       {movie.title}
     </div>
@@ -16,7 +16,7 @@ const mockMovie: Movie = createMockMovie();
 
 jest.mock('@/utils/movieMocks', () => ({
   addMovieExtras: (movie: Movie) => ({
-    ...mockMovie,
+    ...createMockMovie(movie),
     matchPercentage: 90,
     quality: 'HD',
     duration: 120,

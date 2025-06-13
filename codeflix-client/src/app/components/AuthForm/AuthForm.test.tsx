@@ -1,9 +1,10 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { AuthForm } from './AuthForm';
 import "@testing-library/jest-dom"
+import { ButtonProps } from '@/components/CodeflixButton/CodeflixButton';
 
 jest.mock('@/components/CodeflixButton/CodeflixButton', () => ({
-  CodeflixButton: ({ children, type, ...props }: any) => (
+  CodeflixButton: ({ children, type, ...props }: ButtonProps) => (
     <button type={type} {...props}>{children}</button>
   )
 }));

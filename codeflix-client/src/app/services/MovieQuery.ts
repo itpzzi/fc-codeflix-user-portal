@@ -93,7 +93,13 @@ export const getMoviesByGenre = async (genre: string) => {
   };
 };
 
-export const searchMoviesPaginated = async ({ title, cursor, limit }: any) => {
+type SearchMoviesProps = {
+  title: string;
+  cursor?: string;
+  limit?: number;
+};
+
+export const searchMoviesPaginated = async ({ title, cursor, limit }: SearchMoviesProps) => {
   const { data } = await apolloClient.query({
     query: SEARCH_MOVIES_PAGINATED,
     variables: {

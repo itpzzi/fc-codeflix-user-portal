@@ -1,9 +1,11 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import RegisterForm from './RegisterForm';
 import '@testing-library/jest-dom';
+import { ButtonProps } from '@/components/CodeflixButton/CodeflixButton';
+import { InputProps } from '@/components/CodeflixInput/CodeflixInput';
 
 jest.mock('@/components/CodeflixInput/CodeflixInput', () => ({
-    CodeflixInput: ({ label, value, onChange, placeholder, type }: any) => (
+    CodeflixInput: ({ label, value, onChange, placeholder, type }: InputProps) => (
         <div>
             <label>{label}</label>
             <input
@@ -17,7 +19,7 @@ jest.mock('@/components/CodeflixInput/CodeflixInput', () => ({
 }));
 
 jest.mock('@/components/CodeflixButton/CodeflixButton', () => ({
-    CodeflixButton: ({ children, type }: any) => (
+    CodeflixButton: ({ children, type }: ButtonProps) => (
         <button type={type}>{children}</button>
     )
 }));

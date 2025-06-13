@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
-import { Home, Search, Play, User, Settings } from 'lucide-react';
+import { Home, Search, User, Settings } from 'lucide-react';
 import clsx from 'clsx';
 import { SearchBar } from '@/components/SearchBar';
 

@@ -113,7 +113,7 @@ export async function tryFetchOrThrow(url: string, options: RequestInit): Promis
 // }
 
 type Fetcher = (url: string, options: RequestInit) => Promise<Response>;
-type UrlBuilder = (baseURL: string, path: string, params?: Record<string, any>) => string;
+type UrlBuilder = (baseURL: string, path: string, params?: Record<string, boolean | number | string | undefined>) => string;
 
 interface ApiRequestDependencies {
   urlBuilder: UrlBuilder;

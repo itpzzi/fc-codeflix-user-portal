@@ -14,6 +14,10 @@ declare module "next-auth" {
   interface User {
     isChild: boolean
   }
+
+  interface Profile {
+    isChild: boolean
+  }
 }
 
 declare module "next-auth/jwt" {

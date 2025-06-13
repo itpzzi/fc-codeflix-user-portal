@@ -15,8 +15,7 @@ export default async function Search({ searchParams }: ISearchProps) {
   const { title } = searchParams;
 
   const resultMovies = await searchMoviesPaginated({
-    title,
-    cursor: null,
+    title: title || '',
     limit: 10,
   });
   // const resultMovies = await searchMovie(title || '');

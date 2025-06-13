@@ -33,7 +33,7 @@ describe('SearchResults', () => {
                 if (key === 'title') return 'Termo Pesquisa';
             })
         });
-        // @ts-ignore
+        // @ts-expect-error - passando mock não-tipado de filmes, pois o foco do teste é a contagem de renderizações
         render(<SearchResults movies={[1, 2, 3]} />);
 
         expect(screen.getByText('Search results for "Termo Pesquisa"')).toBeInTheDocument();

@@ -37,7 +37,7 @@ export class LoginUseCase {
                 email: user.email,
                 isChild: user.isChild,
             };
-        } catch (error: unknown) {
+        } catch {
             return null;
         }
     }

@@ -5,18 +5,6 @@ import { MovieCard } from './MovieCard';
 import { createMockMovieWithExtras } from '@/tests/mocks/movie';
 import { MovieWithExtras } from '@/types/movie';
 
-jest.mock('next/image', () => ({
-  __esModule: true,
-  default: ({ src, alt, fill, ...props }: any) => (
-    <img
-      src={src}
-      alt={alt}
-      style={fill ? {} : {}}
-      {...props}
-    />
-  ),
-}));
-
 jest.mock('@/hooks/useImageColors', () => ({
   useImageColors: () => ({
     accentColor: '#FF0000',

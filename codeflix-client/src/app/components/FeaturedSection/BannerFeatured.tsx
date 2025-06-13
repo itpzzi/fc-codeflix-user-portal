@@ -4,7 +4,7 @@ import { Movie } from '@/types/movie';
 import Image from 'next/image';
 import { BannerContent } from '@/components/FeaturedSection/BannerContent';
 
-interface BannerFeaturedProps extends Movie { }
+export type BannerFeaturedProps = Movie;
 
 export function BannerFeatured(props: BannerFeaturedProps) {
   return (

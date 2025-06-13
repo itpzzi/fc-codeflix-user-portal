@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes } from "react";
 import clsx from "clsx";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   loading?: boolean;
 }
 

@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <LayoutClient children={children} />
+        <LayoutClient>{children}</LayoutClient>
       </body>
     </html>
   )

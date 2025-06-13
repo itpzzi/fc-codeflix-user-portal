@@ -5,21 +5,9 @@ import { SlideFeatured, SlideItem } from '@/components/FeaturedSection/SlideFeat
 import { Movie } from '@/types/movie';
 import { createMockMovie } from '@/tests/mocks/movie';
 
-jest.mock('next/image', () => ({
-  __esModule: true,
-  default: ({ src, alt, fill, ...props }: any) => (
-    <img
-      src={src}
-      alt={alt}
-      style={fill ? {} : {}}
-      {...props}
-    />
-  ),
-}));
-
 jest.mock('clsx', () => ({
   __esModule: true,
-  default: (...classes: any[]) => classes.filter(Boolean).join(' '),
+  default: (...classes: string[]) => classes.filter(Boolean).join(' '),
 }));
 
 const mockMovies: Movie[] = [

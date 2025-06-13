@@ -10,6 +10,7 @@ import { authService } from "./AuthService";
 import { JWT } from "next-auth/jwt";
 import Keycloak from "next-auth/providers/keycloak";
 
+
 export const authOptions: NextAuthOptions = {
     session: {
         strategy: "jwt",
@@ -21,7 +22,7 @@ export const authOptions: NextAuthOptions = {
             }
 
             if (account && profile) {
-                token.isChild = (profile as any).isChild || false;
+                token.isChild = profile.isChild || false;
             }
 
             return token;

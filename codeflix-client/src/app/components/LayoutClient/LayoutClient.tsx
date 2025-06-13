@@ -2,13 +2,13 @@
 
 import { BubblesBackground, LinesBackground } from "@/components/AnimatedBackground";
 import { BottomNav } from "@/components/BottomNav";
+import { usePathname } from "next/navigation";
 
 interface LayoutClientProps {
     children: React.ReactNode;
 }
 
 export default function LayoutClient({ children }: LayoutClientProps) {
-    const { usePathname } = require("next/navigation");
     const pathname = usePathname();
     const isAuth = pathname.startsWith("/auth");
 

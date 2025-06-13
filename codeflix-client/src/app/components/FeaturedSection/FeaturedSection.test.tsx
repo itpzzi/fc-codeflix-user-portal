@@ -5,16 +5,18 @@ import '@testing-library/jest-dom';
 import { FeaturedSection } from '@/components/FeaturedSection/FeaturedSection';
 import { Movie } from '@/types/movie';
 import { createMockMovie } from '@/tests/mocks/movie';
+import { BannerFeaturedProps } from '@/components/FeaturedSection/BannerFeatured';
+import { SlideFeaturedProps } from '@/components/FeaturedSection/SlideFeatured';
 
 
 jest.mock('./BannerFeatured', () => ({
-  BannerFeatured: ({ title }: any) => (
+  BannerFeatured: ({ title }: BannerFeaturedProps) => (
     <div data-testid="banner-featured">Banner: {title}</div>
   ),
 }));
 
 jest.mock('./SlideFeatured', () => ({
-  SlideFeatured: ({ movies, onSelect, selectedMovie }: any) => (
+  SlideFeatured: ({ movies, onSelect, selectedMovie }: SlideFeaturedProps) => (
     <div data-testid="slide-featured">
       {movies.map((movie: Movie) => (
         <button

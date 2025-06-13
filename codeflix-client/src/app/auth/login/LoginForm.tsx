@@ -98,8 +98,8 @@ export default function LoginForm() {
     try {
       validateSchema()
       await tryToLoginOrThrow();
-    } catch (error: any) {
-      handleErrorOrThrow(error);
+    } catch (error: unknown) {
+      handleErrorOrThrow(error as Error);
     } finally {
       setIsLoading(false);
       clearFields();
@@ -134,7 +134,7 @@ export default function LoginForm() {
 
       {errors && (
         <div className="flex justify-center items-center">
-          {errors.split(";").map((error) => (<p className="text-red-300 font-bold">{error}</p>))}
+          {errors.split(";").map((error) => (<p key={error} className="text-red-300 font-bold">{error}</p>))}
         </div>
       )}
 

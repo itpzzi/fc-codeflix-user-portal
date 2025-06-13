@@ -29,7 +29,7 @@ const scaleIn = {
     }),
 };
 
-interface BannerContentProps extends Movie {}
+type BannerContentProps = Movie;
 
 export function BannerContent(movie: BannerContentProps) {
     return (
