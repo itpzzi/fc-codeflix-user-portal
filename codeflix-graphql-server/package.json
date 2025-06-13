@@ -1,0 +1,37 @@
+{
+  "name": "codeflix-graphql-server",
+  "version": "1.0.0",
+  "description": "Apollo Server + GraphQL Queries for movies",
+  "keywords": [
+    "graphql",
+    "apollo-server"
+  ],
+  "homepage": "https://github.com/itpzzi/fc-codeflix-user-portal#readme",
+  "bugs": {
+    "url": "https://github.com/itpzzi/fc-codeflix-user-portal/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itpzzi/fc-codeflix-user-portal.git"
+  },
+  "license": "ISC",
+  "author": "Ítalo Polazzi",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "postbuild": "cp src/schema.gql dist/schema.gql",
+    "watch": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"node ./dist/server.js\"",
+    "start": "npm run build && npm run watch"
+  },
+  "dependencies": {
+    "apollo-server": "^3.13.0",
+    "graphql": "^16.11.0",
+    "node-fetch": "^3.3.2",
+    "tsc-watch": "^7.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.1",
+    "typescript": "^5.8.3"
+  }
+}

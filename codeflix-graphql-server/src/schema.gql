@@ -1,0 +1,33 @@
+type Movie {
+    id: ID!
+    title: String!
+    description: String!
+    yearLaunched: Int!
+    link: String!
+    castMembers: [String!]!
+    genres: [String!]!
+    thumbFileURL: String!
+    bannerFileURL: String!
+    videoFileURL: String!
+    rating: String!
+}
+
+type PageMeta {
+  startCursor: ID
+  endCursor: ID
+  nextCursor: ID
+  prevCursor: ID
+}
+
+type PaginatedResult {
+    movies: [Movie!]!
+    pageMeta: PageMeta!
+}
+
+type Query {
+    movies(page: Int = 0, limit: Int = 10): [Movie!]!
+    movie(id: ID!): Movie
+    moviesByGenre(genre: String!): [Movie!]!
+    featuredMovies: [Movie!]!
+    searchMovies(title: String!, cursor: String, limit: Int = 5): PaginatedResult!
+}
