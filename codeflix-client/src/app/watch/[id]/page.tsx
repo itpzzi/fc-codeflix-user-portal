@@ -70,11 +70,12 @@ interface IWatchParams {
 }
 
 interface IWatchProps {
-  params: IWatchParams;
+  params: Promise<IWatchParams>;
 }
 
 export default async function Watch({ params }: IWatchProps) {
-  const movie = await getMovieById(params.id);
+  const { id } = await params;
+  const movie = await getMovieById(id);
 
   return (
     <Player movie={movie} />

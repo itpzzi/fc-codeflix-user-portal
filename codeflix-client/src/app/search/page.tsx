@@ -7,19 +7,18 @@ interface ISearchParams {
   title?: string;
 }
 
-interface ISearchProps {
-  searchParams: ISearchParams;
+interface SearchProps {
+  searchParams: Promise<ISearchParams>
 }
 
-export default async function Search({ searchParams }: ISearchProps) {
-  const { title } = searchParams;
+export default async function Search({ searchParams }: SearchProps) {
+  const { title } = await searchParams;
 
   const resultMovies = await searchMoviesPaginated({
     title: title || '',
     limit: 10,
   });
   // const resultMovies = await searchMovie(title || '');
-  
 
   return (
     <SearchResults
