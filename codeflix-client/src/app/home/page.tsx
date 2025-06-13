@@ -2,7 +2,11 @@ import React from "react";
 import { FeaturedSection } from "@/components/FeaturedSection";
 import { GenreSection } from "@/components/GenreSection";
 import { StateSimulator } from "@/components/StateSimulator";
-import { getFeaturedMovies, getMoviesByGenre } from "@/services/MovieService";
+import {
+  getFeaturedMovies
+  //, getMoviesByGenre
+} from "@/services/MovieService";
+import { getMoviesByGenre } from "@/services/MovieQuery";
 
 const genres = [
   "Drama",

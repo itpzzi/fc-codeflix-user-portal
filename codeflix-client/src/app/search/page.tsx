@@ -1,5 +1,6 @@
 import { SearchResults } from "@/components/SearchResults";
-import { searchMovie } from "@/services/MovieService";
+import { searchMoviesPaginated } from "@/services/MovieQuery";
+// import { searchMovie } from "@/services/MovieService";
 import React from "react";
 
 interface ISearchParams {
@@ -13,9 +14,17 @@ interface ISearchProps {
 export default async function Search({ searchParams }: ISearchProps) {
   const { title } = searchParams;
 
-  const resultMovies = await searchMovie(title || '');
+  const resultMovies = await searchMoviesPaginated({
+    title,
+    cursor: null,
+    limit: 10,
+  });
+  // const resultMovies = await searchMovie(title || '');
+  
 
   return (
-    <SearchResults movies={resultMovies.data} />
+    <SearchResults
+      movies={resultMovies.data}
+    />
   );
 }

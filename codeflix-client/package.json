@@ -12,6 +12,7 @@
     "json-server": "json-server --watch db.json -p 3333"
   },
   "dependencies": {
+    "@apollo/client": "^3.13.8",
     "@vidstack/react": "^1.12.13",
     "clsx": "^2.1.1",
     "extract-colors": "^4.2.0",
