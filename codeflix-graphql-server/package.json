@@ -17,12 +17,13 @@
   "license": "ISC",
   "author": "Ítalo Polazzi",
   "type": "module",
-  "main": "index.js",
+  "main": "dist/server.js",
   "scripts": {
     "build": "tsc",
     "postbuild": "cp src/schema.gql dist/schema.gql",
     "watch": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"node ./dist/server.js\"",
-    "start": "npm run build && npm run watch"
+    "dev": "npm run build && npm run watch",
+    "start": "node dist/server.js"
   },
   "dependencies": {
     "apollo-server": "^3.13.0",

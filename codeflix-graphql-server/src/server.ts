@@ -21,6 +21,8 @@ const server = new ApolloServer(
         }
     });
 
-server.listen().then(({ url }) => {
+const APOLLO_SERVER_PORT = process.env.APOLLO_SERVER_PORT || 4000;
+
+server.listen({ port: APOLLO_SERVER_PORT }).then(({ url }) => {
     console.log(`Servidor de GraphQL rodando em ${url}`);
 });

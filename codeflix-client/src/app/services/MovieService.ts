@@ -2,7 +2,7 @@ import { Movie } from "@/types/movie";
 import { createJsonServerClient, JsonServerPaginatedResponse, JsonServerQueryParams } from "@/services/JsonServerApiClient";
 
 const client = createJsonServerClient({
-    baseURL: process.env.BASE_URL || 'http://localhost:3333',
+    baseURL: process.env.JSON_SERVER_URL || 'http://localhost:3333',
     defaultHeaders: {},
     timeout: 5000
 });
