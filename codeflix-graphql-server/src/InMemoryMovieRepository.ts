@@ -1,6 +1,6 @@
 import { Movie, MovieRepository } from "./types.js";
 
-const API_URL = process.env.API_URL || 'http://localhost:3333';
+const API_URL = process.env.JSON_SERVER_URL || 'http://localhost:3333';
 
 export class InMemoryMovieRepository implements MovieRepository {
     async getMovies(page = 1, limit = 10): Promise<Movie[]> {

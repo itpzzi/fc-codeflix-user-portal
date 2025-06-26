@@ -1,9 +1,12 @@
+import dotenv from 'dotenv';
 import { ApolloServer } from "apollo-server";
 import { readFileSync } from "fs";
 import { resolvers } from './resolvers.js';
 import path from "path";
 import { fileURLToPath } from "url";
 import { InMemoryMovieRepository } from './InMemoryMovieRepository.js';
+
+dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
